@@ -43,7 +43,7 @@ window.addEventListener("load", function () {
     }
     draw(context) {
       context.fillStyle = "yellow";
-      fillRect(this.x, this.y, this.width, this.height);
+      context.fillRect(this.x, this.y, this.width, this.height);
     }
   }
   class Particle {}
