@@ -16,6 +16,8 @@ window.addEventListener("load", function () {
           this.game.keys.push(e.key);
         } else if (e.key === " ") {
           this.game.player.shootTop();
+        } else if (e.debug === "d") {
+          this.game.debug = !this.game.debug;
         }
         console.log(this.game.keys);
       });
@@ -83,8 +85,8 @@ window.addEventListener("load", function () {
       }
     }
     draw(context) {
-      context.fillStyle = "black";
-      context.fillRect(this.x, this.y, this.width, this.height);
+      if (this.game.debug)
+        context.strokeRect(this.x, this.y, this.width, this.height);
       context.drawImage(
         this.image,
         this.frameX * this.width,
@@ -251,6 +253,7 @@ window.addEventListener("load", function () {
       this.gameTime = 0;
       this.timeLimit = 5000;
       this.speed = 1;
+      this.debug = true;
     }
     update(deltaTime) {
       if (!this.gameOver) this.gameTime += deltaTime;
