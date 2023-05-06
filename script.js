@@ -208,7 +208,7 @@ window.addEventListener("load", function () {
       this.x += this.speedX - this.game.speed;
       if (this.x + this.width < 0) this.markedForDeletion = true;
       //sprite animation
-      if (this.frame < this.maxFrame) {
+      if (this.frameX < this.maxFrame) {
         this.frameX++;
       } else this.frameX = 0;
     }
@@ -418,7 +418,7 @@ window.addEventListener("load", function () {
       context.fillText("Timer: " + formattedTime, 20, 100);
       // game over messages
       if (this.game.gameOver) {
-        constext.textAlign = "center";
+        context.textAlign = "center";
         let message1;
         let message2;
         if (this.game.score > this.game.winningScore) {
