@@ -347,6 +347,11 @@ window.addEventListener("load", function () {
       this.y = y;
       this.frameX = 0;
       this.spriteHeight = 200;
+      this.spriteWidth = 200;
+      this.width = this.spriteWidth;
+      this.height = this.spriteHeight;
+      this.x = x - this.width * 0.5;
+      this.y = y - this.height + 0.5;
       this.fps = 15;
       this.timer = 0;
       this.interval = 1000 / 15;
@@ -382,15 +387,15 @@ window.addEventListener("load", function () {
     constructor(game, x, y) {
       super(game, x, y);
       this.image = document.getElementById("smokeExplosion");
-      this.spriteWidth = 200;
-      this.width = this.spriteWidth;
-      this.height = this.spriteHeight;
-      this.x = x - this.width * 0.5;
-      this.y = y - this.height + 0.5;
     }
   }
 
-  class FireExplosion extends Explosion {}
+  class FireExplosion extends Explosion {
+    constructor(game, x, y) {
+      super(game, x, y);
+      this.image = document.getElementById("fireExplosion");
+    }
+  }
   class UI {
     constructor(game) {
       this.game = game;
@@ -577,7 +582,7 @@ window.addEventListener("load", function () {
     }
     addExplosion() {
       const randomize = Math.random();
-      if (randomize < 1)
+      if (randomize < 0.5)
         this.explosions.push(
           new SmokeExplosion(
             this,
@@ -585,6 +590,14 @@ window.addEventListener("load", function () {
             enemy.y + enemy.height * 0.5
           )
         );
+        else {
+          this.explosions.push(
+            new FireExplosion(
+              this,
+              enemy.x + enemy.width * 0.5,
+              enemy.y + enemy.height * 0.5
+            )
+        }
     }
     checkCollision(rect1, rect2) {
       return (
