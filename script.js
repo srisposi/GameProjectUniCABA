@@ -16,7 +16,7 @@ window.addEventListener("load", function () {
           this.game.keys.push(e.key);
         } else if (e.key === " ") {
           this.game.player.shootTop();
-        } else if (e.debug === "d") {
+        } else if (e.key === "d") {
           this.game.debug = !this.game.debug;
         }
       });
@@ -156,9 +156,6 @@ window.addEventListener("load", function () {
     draw(context) {
       if (this.game.debug)
         context.strokeRect(this.x, this.y, this.width, this.height);
-      this.projectiles.forEach((projectile) => {
-        projectile.draw(context);
-      });
       context.drawImage(
         this.image,
         this.frameX * this.width,
@@ -170,6 +167,9 @@ window.addEventListener("load", function () {
         this.width,
         this.height
       );
+      this.projectiles.forEach((projectile) => {
+        projectile.draw(context);
+      });
     }
     shootTop() {
       if (this.game.ammo > 0) {
@@ -415,7 +415,7 @@ window.addEventListener("load", function () {
 
       // timer
       const formattedTime = (this.game.gameTime * 0.001).toFixed(1);
-      context.fillText("Timer: " + this.game.gameTime, 20, 100);
+      context.fillText("Timer: " + formattedTime, 20, 100);
       // game over messages
       if (this.game.gameOver) {
         constext.textAlign = "center";
