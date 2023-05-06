@@ -257,7 +257,7 @@ window.addEventListener("load", function () {
     constructor(game) {
       this.game = game;
       this.fontSize = 25;
-      this.fontFamily = "Helvetica";
+      this.fontFamily = "Bruno Ace SC";
       this.color = "white";
     }
     draw(context) {
@@ -279,23 +279,23 @@ window.addEventListener("load", function () {
         let message1;
         let message2;
         if (this.game.score > this.game.winningScore) {
-          message1 = "You Win!";
-          message2 = "Well done!";
+          message1 = "Has derrotado todas las oleadas";
+          message2 = "Great Job";
         } else {
-          message1 = "You lose!";
+          message1 = "No has podido con todos";
           message2 = "Try again next time!";
         }
-        context.font = "50px " + this.fontFamily;
+        context.font = "70px " + this.fontFamily;
         context.fillText(
           message1,
           this.game.width * 0.5,
-          this.game.height * 0.5 - 40
+          this.game.height * 0.5 - 20
         );
         context.font = "25px " + this.fontFamily;
         context.fillText(
           message2,
           this.game.width * 0.5,
-          this.game.height * 0.5 + 40
+          this.game.height * 0.5 + 20
         );
       }
       //ammo
