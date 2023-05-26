@@ -390,7 +390,6 @@ window.addEventListener("load", function () {
       this.image = document.getElementById("smokeExplosion");
     }
   }
-
   class FireExplosion extends Explosion {
     constructor(game, x, y) {
       super(game, x, y);

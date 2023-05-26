@@ -59,13 +59,3 @@ Game: Esta clase tendrá toda la lógica, será el cerebro de nuestro proyecto.
 Commit 4 - Creating Player and Game objects
 
 Constructor: Es un método especial en la clase javascript. Cuando llamo a esta clase de javascript más tarde usando la palabra clave "new", el constructor creará un nuevo objeto de javascript en blanco y le asignará propiedades y valores según el plano interno.
-
-Convierto ese objeto de juego en clase. propiedad en la clase de jugador como esta.
-Estoy diciendo que tomes este objeto de juego que fue pasado como argumento a la clase
-constructor y convertirlo en clase
-propiedad llamada este juego.
-Tenga en cuenta que al hacer esto,
-No estoy creando una copia de la principal.
-objeto del juego y colocándolo en el jugador.
-
-player sprinte tiene 120px X 190px en este caso
