@@ -355,7 +355,7 @@ window.addEventListener("load", function () {
       this.y = y - this.height + 0.5;
       this.fps = 15;
       this.timer = 0;
-      this.interval = 1000 / 15;
+      this.interval = 1000 / this.fps;
       this.markedForDeletion = false;
       this.maxFrame = 8;
     }
@@ -581,7 +581,7 @@ window.addEventListener("load", function () {
       else if (randomize < 0.7) this.enemies.push(new HiveWhale(this));
       else this.enemies.push(new LuckyFish(this));
     }
-    addExplosion() {
+    addExplosion(enemy) {
       const randomize = Math.random();
       if (randomize < 0.5)
         this.explosions.push(
