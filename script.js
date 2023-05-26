@@ -102,8 +102,8 @@ window.addEventListener("load", function () {
   class Player {
     constructor(game) {
       this.game = game;
-      this.width = 120;
-      this.height = 190;
+      this.width = 200;
+      this.height = 105;
       this.x = 20;
       this.y = 100;
       this.frameX = 0;
@@ -156,6 +156,9 @@ window.addEventListener("load", function () {
     draw(context) {
       if (this.game.debug)
         context.strokeRect(this.x, this.y, this.width, this.height);
+      this.projectiles.forEach((projectile) => {
+        projectile.draw(context);
+      });
       context.drawImage(
         this.image,
         this.frameX * this.width,
@@ -167,9 +170,6 @@ window.addEventListener("load", function () {
         this.width,
         this.height
       );
-      this.projectiles.forEach((projectile) => {
-        projectile.draw(context);
-      });
     }
     shootTop() {
       if (this.game.ammo > 0) {
@@ -213,7 +213,8 @@ window.addEventListener("load", function () {
       } else this.frameX = 0;
     }
     draw(context) {
-      context.strokeRect(this.x, this.y, this.width, this.height);
+      if (this.game.debug)
+        context.strokeRect(this.x, this.y, this.width, this.height);
       context.drawImage(
         this.image,
         this.frameX * this.width,
@@ -234,8 +235,8 @@ window.addEventListener("load", function () {
   class Angler1 extends Enemy {
     constructor(game) {
       super(game);
-      this.width = 228;
-      this.height = 169;
+      this.width = 230;
+      this.height = 228;
       this.y = Math.random() * (this.game.height * 0.95 - this.height);
       this.image = document.getElementById("angler1");
       this.frameY = Math.floor(Math.random() * 3);
@@ -248,7 +249,7 @@ window.addEventListener("load", function () {
     constructor(game) {
       super(game);
       this.width = 223;
-      this.height = 165;
+      this.height = 223;
       this.y = Math.random() * (this.game.height * 0.95 - this.height);
       this.image = document.getElementById("angler2");
       this.frameY = Math.floor(Math.random() * 2);
@@ -261,7 +262,7 @@ window.addEventListener("load", function () {
     constructor(game) {
       super(game);
       this.width = 99;
-      this.height = 95;
+      this.height = 105;
       this.y = Math.random() * (this.game.height * 0.95 - this.height);
       this.image = document.getElementById("lucky");
       this.frameY = Math.floor(Math.random() * 2);
@@ -275,7 +276,7 @@ window.addEventListener("load", function () {
     constructor(game) {
       super(game);
       this.width = 400;
-      this.height = 227;
+      this.height = 225;
       this.y = Math.random() * (this.game.height * 0.95 - this.height);
       this.image = document.getElementById("hivewhale");
       this.frameY = 0;
@@ -535,7 +536,7 @@ window.addEventListener("load", function () {
               }
               enemy.markedForDeletion = true;
               this.addExplosion(enemy);
-              if (enemy === "hive") {
+              if (enemy.type === "hive") {
                 for (let i = 0; i < 5; i++) {
                   this.enemies.push(
                     new Drone(
