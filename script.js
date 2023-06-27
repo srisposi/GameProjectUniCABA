@@ -25,6 +25,44 @@ window.addEventListener("load", function () {
           this.game.keys.splice(this.game.keys.indexOf(e.key), 1);
         }
       });
+
+      window.addEventListener("touchstart", (e) => {
+        const touchY = e.touches[0].clientY;
+        const screenHeight = window.innerHeight;
+        if (touchY < screenHeight / 2) {
+          // Movimiento hacia arriba
+          if (this.game.keys.indexOf("ArrowUp") === -1) {
+            this.game.keys.push("ArrowUp");
+          }
+        } else {
+          // Movimiento hacia abajo
+          if (this.game.keys.indexOf("ArrowDown") === -1) {
+            this.game.keys.push("ArrowDown");
+          }
+        }
+        this.game.player.shootTop();
+      });
+
+      window.addEventListener("touchend", (e) => {
+        if (this.game.keys.indexOf("ArrowUp") > -1) {
+          this.game.keys.splice(this.game.keys.indexOf("ArrowUp"), 1);
+        }
+        if (this.game.keys.indexOf("ArrowDown") > -1) {
+          this.game.keys.splice(this.game.keys.indexOf("ArrowDown"), 1);
+        }
+      });
+
+      // Agregar eventos táctiles
+      // window.addEventListener("touchstart", (e) => {
+      //   this.game.keys.indexOf(e.key) === -1;
+      //   this.game.player.shootTop();
+      // });
+
+      // window.addEventListener("touchend", (e) => {
+      //   if (this.game.keys.indexOf(e.key) > -1) {
+      //     this.game.keys.splice(this.game.keys.indexOf(e.key), 1);
+      //   }
+      // });
     }
   }
   class Projectile {
