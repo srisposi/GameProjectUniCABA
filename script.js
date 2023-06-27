@@ -236,7 +236,7 @@ window.addEventListener("load", function () {
     constructor(game) {
       super(game);
       this.width = 230;
-      this.height = 228;
+      this.height = 129;
       this.y = Math.random() * (this.game.height * 0.95 - this.height);
       this.image = document.getElementById("angler1");
       this.frameY = Math.floor(Math.random() * 3);
@@ -422,19 +422,19 @@ window.addEventListener("load", function () {
         let message1;
         let message2;
         if (this.game.score > this.game.winningScore) {
-          message1 = "Has derrotado todas las oleadas";
-          message2 = "Great Job";
+          message1 = "Has Salvado la Tierra";
+          message2 = "Gracias Super Vic";
         } else {
-          message1 = "No has podido con todos";
-          message2 = "Try again next time!";
+          message1 = "Estamos perdidos";
+          message2 = "No tenemos salvación";
         }
-        context.font = "70px " + this.fontFamily;
+        context.font = "50px " + this.fontFamily;
         context.fillText(
           message1,
           this.game.width * 0.5,
           this.game.height * 0.5 - 20
         );
-        context.font = "25px " + this.fontFamily;
+        context.font = "20px " + this.fontFamily;
         context.fillText(
           message2,
           this.game.width * 0.5,
