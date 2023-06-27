@@ -403,6 +403,7 @@ window.addEventListener("load", function () {
       this.fontFamily = "Bruno Ace SC";
       this.color = "white";
     }
+
     draw(context) {
       context.save();
       context.fillStyle = this.color;
@@ -412,7 +413,13 @@ window.addEventListener("load", function () {
       context.font = this.fontSize + "px " + this.fontFamily;
       //score
       context.fillText("Score " + this.game.score, 20, 40);
-
+      // Reproducir música de fondo
+      const bgMusic = document.getElementById("bgMusic");
+      // Obtiene una referencia al elemento de audio
+      const backgroundMusic = document.getElementById("bgMusic");
+      // Controla el volumen del audio
+      backgroundMusic.volume = 0.15;
+      bgMusic.play();
       // timer
       const formattedTime = (this.game.gameTime * 0.001).toFixed(1);
       context.fillText("Timer: " + formattedTime, 20, 100);
@@ -475,6 +482,7 @@ window.addEventListener("load", function () {
       this.speed = 1;
       this.debug = false;
     }
+
     update(deltaTime) {
       if (!this.gameOver) this.gameTime += deltaTime;
       if (this.gameTime > this.timeLimit) this.gameOver = true;
